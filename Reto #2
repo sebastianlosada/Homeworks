@@ -1,1 +1,9 @@
-hj
+const FirstApp = () =>{
+    return(
+      <>
+        <h1>My App</h1>
+        <span>10</span>
+      </>
+      
+   )
+}
