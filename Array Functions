@@ -1,1 +1,237 @@
-hj
+at: f at()
+
+const myArray = ['a', 'b', 'c', 'd'];
+console.log( myArray.at(2) ); // salida: 'c'
+
+concat: f concat()
+
+const array1 = ['a', 'b', 'c'];
+const array2 = ['d', 'e', 'f'];
+const array3 = array1.concat(array2);
+console.log(array3); // salida: ['a', 'b', 'c', 'd', 'e', 'f']
+
+constructor: f Array()
+
+const myArray = new Array('a', 'b', 'c');
+console.log(myArray); // salida: ['a', 'b', 'c']
+// vacio:
+const emptyArray = new Array(3);
+console.log(emptyArray); // salida: [undefined, undefined, undefined]
+
+copyWithin: f copyWithin()
+
+const myArray = ['a', 'b', 'c', 'd', 'e'];
+myArray.copyWithin(1, 3, 4);
+console.log(myArray); // salida: ['a', 'd', 'c', 'd', 'e']
+
+entries: f entries()
+
+const myArray = ['a', 'b', 'c'];
+const iterator = myArray.entries();
+console.log(iterator.next().value); // salida: [0, 'a']
+console.log(iterator.next().value); // salida: [1, 'b']
+console.log(iterator.next().value); // salida: [2, 'c']
+
+every: f every()
+
+const myArray = [1, 2, 3, 4, 5];
+const allGreaterThanZero = myArray.every(element => element > 0);
+console.log(allGreaterThanZero); // salida: true
+
+fill: f fill()
+
+const myArray = [1, 2, 3, 4, 5];
+myArray.fill(0, 2, 4);
+console.log(myArray); // salida: [1, 2, 0, 0, 5]
+
+filter: f filter()
+
+const myArray = [1, 2, 3, 4, 5];
+const filteredArray = myArray.filter(element => element > 2);
+console.log(filteredArray); // salida: [3, 4, 5]
+
+find: f find()
+
+const myArray = [1, 2, 3, 4, 5];
+const foundElement = myArray.find(element => element > 2);
+console.log(foundElement); // salida: 3
+
+findIndex: f findIndex()
+
+const myArray = [1, 2, 3, 4, 5];
+const foundIndex = myArray.findIndex(element => element > 2);
+console.log(foundIndex); // salida: 2
+
+findLast: f findLast()
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const lastEvenNumber = numbers.findLast(num => num % 2 === 0);
+console.log(lastEvenNumber); // salida: 10
+
+findLastIndex: f findLastIndex()
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const lastEvenIndex = numbers.findLastIndex(num => num % 2 === 0);
+console.log(lastEvenIndex); // salida: 8
+
+flat: f flat()
+
+const nestedArray = [1, 2, [3, 4, [5, 6]]];
+const flattenedArray = nestedArray.flat();
+console.log(flattenedArray); // salida: [1, 2, 3, 4, [5, 6]]
+
+flatMap: f flatMap()
+
+const numbers = [1, 2, 3];
+const flattenedMappedNumbers = numbers.flatMap(num => [num * 2]);
+console.log(flattenedMappedNumbers); // salida: [2, 4, 6]
+
+forEach: f forEach()
+
+const numbers = [1, 2, 3, 4, 5];
+numbers.forEach(num => console.log(num * 2));
+// salida: 2 4 6 8 10
+
+includes: f includes()
+
+const numbers = [1, 2, 3, 4, 5];
+const hasNumber = numbers.includes(3);
+console.log(hasNumber); // salida: true
+
+indexOf: f indexOf()
+
+const numbers = [1, 2, 3, 4, 5];
+const index = numbers.indexOf(3);
+console.log(index); // salida: 2
+
+join: f join()
+
+const fruits = ['apple', 'banana', 'orange'];
+const joinedFruits = fruits.join(', ');
+console.log(joinedFruits); // salida: "apple, banana, orange"
+
+keys: f keys()
+
+const person = { name: 'John', age: 30, city: 'New York' };
+const keys = Object.keys(person);
+console.log(keys); // salida: ["name", "age", "city"]
+
+lastIndexOf: f lastIndexOf() length: 0
+
+const emptyArray = [];
+const index = emptyArray.lastIndexOf(3);
+console.log(index); // salida: -1
+
+map: f map()
+
+const numbers = [1, 2, 3, 4, 5];
+const doubledNumbers = numbers.map(num => num * 2);
+console.log(doubledNumbers); // salida: [2, 4, 6, 8, 10]
+
+pop: f pop()
+
+const numbers = [1, 2, 3, 4, 5];
+const lastNumber = numbers.pop();
+console.log(lastNumber); // salida: 5
+console.log(numbers); // salida: [1, 2, 3, 4]
+
+push: f push()
+
+const numbers = [1, 2, 3];
+const newLength = numbers.push(4, 5);
+console.log(newLength); // salida: 5
+console.log(numbers); // salida: [1, 2, 3, 4, 5]
+
+reduce: f reduce()
+
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue);
+console.log(sum); // salida: 15
+
+reduceRight: f reduceRight()
+
+const numbers = [1, 2, 3, 4, 5];
+const reversedNumbers = numbers.reduceRight((accumulator, currentValue) => {
+  accumulator.push(currentValue);
+  return accumulator;
+}, []);
+console.log(reversedNumbers); // salida: [5, 4, 3, 2, 1]
+
+reverse: f reverse()
+
+const letters = ['a', 'b', 'c', 'd'];
+letters.reverse();
+console.log(letters); // salida: ['d', 'c', 'b', 'a']
+
+shift: f shift()
+
+const numbers = [1, 2, 3];
+const firstNumber = numbers.shift();
+console.log(firstNumber); // salida: 1
+console.log(numbers); // salida: [2, 3]
+
+slice: f slice()
+
+const numbers = [1, 2, 3, 4, 5];
+const subArray = numbers.slice(2, 4);
+console.log(subArray); // salida: [3, 4]
+console.log(numbers); // salida: [1, 2, 3, 4, 5]
+
+some: f some()
+
+const numbers = [1, 2, 3, 4, 5];
+const hasEvenNumber = numbers.some((number) => number % 2 === 0);
+console.log(hasEvenNumber); // salida: true
+
+sort: f sort()
+
+const numbers = [5, 3, 1, 4, 2];
+numbers.sort();
+console.log(numbers); // salida: [1, 2, 3, 4, 5]
+
+//TAMBIEN
+
+const numbers = [5, 3, 1, 4, 2];
+numbers.sort((a, b) => b - a);
+console.log(numbers); // salida: [5, 4, 3, 2, 1]
+
+splice: f splice()
+
+const numbers = [1, 2, 3, 4, 5];
+const deletedElements = numbers.splice(2, 2, 6, 7, 8);
+console.log(numbers); // salida: [1, 2, 6, 7, 8, 5]
+console.log(deletedElements); // salida: [3, 4]
+
+toLocaleString: f toLocalString()
+
+const numbers = [1234.56, 7890.12, 3456.78];
+const localizedString = numbers.toLocaleString('es-ES', {
+  style: 'currency',
+  currency: 'EUR',
+  minimumFractionDigits: 2
+});
+console.log(localizedString); // salida: "1.234,56 €, 7.890,12 €, 3.456,78 €"
+
+toString: f toString()
+
+const fruits = ['apple', 'banana', 'orange'];
+const fruitsString = fruits.toString();
+console.log(fruitsString); // salida: "apple,banana,orange"
+
+unshift: f unshift()
+
+const numbers = [2, 3, 4];
+const newLength = numbers.unshift(1);
+console.log(numbers); // salida: [1, 2, 3, 4]
+console.log(newLength); // salida: 4
+
+values: f values()
+
+const numbers = [1, 2, 3];
+
+const valuesIterator = numbers.values();
+console.log(valuesIterator.next()); // salida: { value: 1, done: false }
+console.log(valuesIterator.next()); // salida: { value: 2, done: false }
+console.log(valuesIterator.next()); // salida: { value: 3, done: false }
+console.log(valuesIterator.next()); // salida: { value: undefined, done: true }
+
