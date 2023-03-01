@@ -1,1 +1,19 @@
-hj
+//REGULAR FUNCTION
+
+function determinaOddEven(numero) {
+  if(numero % 2 === 0) {
+    console.log(numero + " es par");
+  } else {
+    console.log(numero + " es impar");
+  }
+}
+
+//ARROW FUNCTION
+
+const determinaOddEven = (numero) => {
+  if(numero % 2 === 0) {
+    console.log(numero + " es par");
+  } else {
+    console.log(numero + " es impar");
+  }
+}
