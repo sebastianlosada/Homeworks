@@ -1,3 +1,5 @@
+const title = 'First App';
+
 const FirstApp = () =>{
     return(
       <>
@@ -7,3 +9,19 @@ const FirstApp = () =>{
       
    )
 }
+
+export default FirstApp
+
+///////////////////////////
+
+const FirstApp = () =>{
+    return(
+      <>
+        <h1>My First App</h1>
+        <span>10</span>
+      </>
+      
+   )
+}
+
+export default FirstApp
