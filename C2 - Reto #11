@@ -1,1 +1,56 @@
-fg
+NavComponente
+
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import './NavComponente.css';
+
+class NavComponente extends Component {
+  render() {
+    return (
+      <div className="navbar">
+        <NavLink exact to="/" className="nav-item" activeClassName="active">
+          Home
+        </NavLink>
+        <NavLink to="/about" className="nav-item" activeClassName="active">
+          About
+        </NavLink>
+        <NavLink to="/contact" className="nav-item" activeClassName="active">
+          Contact
+        </NavLink>
+      </div>
+    );
+  }
+}
+
+export default NavComponente;
+
++++++++++++++++++++++
+CSS
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  height: 60px;
+  padding: 0 20px;
+}
+
+.nav-item {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #f5c518;
+}
+
+.active {
+  color: #f5c518;
+  border-bottom: 2px solid #f5c518;
+}
+
