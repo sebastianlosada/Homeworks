@@ -1,1 +1,65 @@
-g
+TodoItem
+
+export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
+  const handleDeleteClick = () => {
+    onDeleteTodo(todo.id);
+  };
+
+  const handleToggleClick = () => {
+    onToggleTodo(todo.id);
+  };
+
+  return (
+    <li className="list-group-item d-flex justify-content-between">
+      <span
+        onClick={handleToggleClick}
+        className={`align-self-center ${todo.done ? 'text-decoration-line-through' : ''}`}
+        style={{ cursor: 'pointer' }}
+      >
+        {todo.description}
+      </span>
+      <button className="btn btn-danger" onClick={handleDeleteClick}>
+        Borrar
+      </button>
+    </li>
+  );
+};
++++++++++++++
+Hook useTodo
+
+import { useState } from 'react';
+
+export const useTodo = () => {
+  const [todos, setTodos] = useState([]);
+
+  const addTodo = (description) => {
+    setTodos([...todos, { id: todos.length + 1, description, done: false }]);
+  };
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
+    );
+  };
+
+  const countTodos = () => todos.length;
+
+  const countPendingTodos = () =>
+    todos.filter((todo) => todo.done === false).length;
+
+  return {
+    todos,
+    addTodo,
+    deleteTodo,
+    toggleTodo,
+    countTodos,
+    countPendingTodos,
+  };
+};
+
