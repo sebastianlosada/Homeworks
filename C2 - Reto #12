@@ -1,1 +1,60 @@
-fg
+AuthContext
+
+import React, { createContext, useReducer } from 'react';
+
+export const AuthContext = createContext();
+
+const initialState = {
+  isAuthenticated: false,
+  currentUser: null,
+  lastVisitedPage: '/'
+};
+
+const authReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return {
+        isAuthenticated: true,
+        currentUser: action.payload,
+        lastVisitedPage: state.lastVisitedPage
+      };
+    case 'LOGOUT':
+      return {
+        isAuthenticated: false,
+        currentUser: null,
+        lastVisitedPage: state.lastVisitedPage
+      };
+    case 'SET_LAST_VISITED_PAGE':
+      return {
+        ...state,
+        lastVisitedPage: action.payload
+      };
+    default:
+      return state;
+  }
+};
+
+export const AuthProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(authReducer, initialState);
+
+  const login = (user) => {
+    dispatch({ type: 'LOGIN', payload: user });
+  };
+
+  const logout = () => {
+    dispatch({ type: 'LOGOUT' });
+  };
+
+  const setLastVisitedPage = (page) => {
+    dispatch({ type: 'SET_LAST_VISITED_PAGE', payload: page });
+  };
+
+  return (
+    <AuthContext.Provider value={{ state, login, logout, setLastVisitedPage }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
++++++++++++++
+App
