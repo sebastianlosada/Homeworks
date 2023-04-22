@@ -1,1 +1,52 @@
-df
+App.jsx
+
+
+import React from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {increment, decrement} from './store/slices/counterSlice';
+
+export constApp = () => {
+	const{counter} = useSelector(state => state.counter);
+	const dispatch = useDispatch();
+
+	return(
+		<>
+			<h1> App </h1>
+			<hr/>
+			<span> Counter is: {counter} </span>
+			<button
+				className='btn btn-primary'
+				onClick={ () => dispatch( increment())}
+			> +1 </button>
+			<button
+				className=btn btn-secundary'
+				onClick={ () => dispatch(decrement())}
+			> -1 </button>
+		</>
+	)
+}
+
++++++++++++++
+conterSlice.js
+
+
+import {createSlice} from '@reduxjs/toolkit'
+
+const initialState = {
+	counter:0
+}
+
+export const counterSlice = createSlice({
+	name: 'counter',
+	initialState,
+	reducers:{
+		increment: (state) => {
+			state.counter += 1
+		}
+		decrement: (state) => {
+			state.counter -= 1
+		}
+	}
+})
+
+export const {increment} = counterSlice.actions
