@@ -1,1 +1,48 @@
+RETO # 18
 
+Implement UPDATE and DELETE Tasks
+1. Use req.params.id to get id from URL Route params.
+2. Use findById method from Model to search task by id
+3. Check if task exists, and user is the same who has created the Task
+4. use findByIdAndUpdate method to update and return to Postman new Task
+5. use findByIdAndDelete method to remove
+
+--------------------------------------------
+const actualizarTask = async (req, res) => {
+    const { id } = req.params;
+    const { id: userId } = req.user;
+
+    try {
+        const task = await Task.findById(id);
+        
+        if (task && task.user.toString() === userId) {
+            const updatedTask = await Task.findByIdAndUpdate(id, req.body, { new: true });
+            return res.status(200).json({ ok: true, task: updatedTask });
+        }
+
+        return res.status(404).json({ ok: false, msg: 'Task no encontrado o no autorizado' });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ ok: false, msg: 'Error interno' });
+    }
+}
+
+-----------------------------------------------
+const eliminarTask = async (req, res) => {
+    const { id } = req.params;
+    const { id: userId } = req.user;
+
+    try {
+        const task = await Task.findById(id);
+        
+        if (task && task.user.toString() === userId) {
+            await Task.findByIdAndDelete(id);
+            return res.status(200).json({ ok: true, msg: 'Task eliminado' });
+        }
+
+        return res.status(404).json({ ok: false, msg: 'Task no encontrado o no autorizado' });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ ok: false, msg: 'Error interno' });
+    }
+}
