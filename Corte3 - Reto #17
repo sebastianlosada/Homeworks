@@ -1,1 +1,5 @@
-df
+RETO #17
+
+1. Implement register route as a POST method
+2. Enable validations in each route,
+according to received data.
