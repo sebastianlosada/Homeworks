@@ -1,5 +1,48 @@
 RETO #17
 
 1. Implement register route as a POST method
-2. Enable validations in each route,
-according to received data.
+2. Enable validations in each route, according to received data.
+
+------------------------------------------------
+const express = require('express')
+const router = express.Router();
+const { check } = require('express-validator');
+const { crearUsuario, loginUsuario, revalidarToken } = require('../Controllers/auth');
+const { validarCampos } = require('../MiddleWares/validar-campos');
+const { validarJWT } = require('../MiddleWares/validar-token')
+
+
+router.post('/', loginUsuario)
+
+router.post('/new',
+    [
+        check('name', 'El nombre es obligatorio').not().isEmpty(),
+        check('email', 'El email es obligatorio').isEmail(),
+        check('password',).isLength({min: 6}),
+        validarCampos
+    ],
+    crearUsuario)
+
+
+router.get('/renew', validarJWT, revalidarToken)
+
+module.exports = router;
+
+-----------------------------------------------------------
+
+const express = require('express')
+const {validationResult} = require('express-validator');
+
+const validarCampos = (req, res = expresss.response, next) => {
+    const errors = validationResult ( req );
+    if (!errors.isEmpty()){
+        return res.status(400).json({
+            ok: false,
+            errors: errors.mapped()
+        })
+    }
+
+    next();
+}
+
+module.exports = {validarCampos}
