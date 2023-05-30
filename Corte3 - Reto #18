@@ -7,7 +7,7 @@ Implement UPDATE and DELETE Tasks
 4. use findByIdAndUpdate method to update and return to Postman new Task
 5. use findByIdAndDelete method to remove
 
-Controllers.Task.js
+Controllers/Task.js
 --------------------------------------------
 const actualizarTask = async (req, res) => {
     const { id } = req.params;
